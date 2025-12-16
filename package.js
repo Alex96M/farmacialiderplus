@@ -9,5 +9,7 @@
   "dependencies": {
     "express": "^4.19.2",
     "sqlite3": "^5.1.7",
+    "multer": "^1.4.5"
   }
 }
+
