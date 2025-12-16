@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Farmacia LiderPlus — Catálogo</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- simple icon set -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <img src="img/logo.png" alt="Logo Farmacia LiderPlus" class="logo">
+        <div>
+          <h1>Farmacia <span class="accent">LiderPlus</span></h1>
+          <p class="tag">Justo frente a Urgencias del Hospital General de Reforma</p>
+        </div>
+      </div>
+
+      <nav class="nav-actions">
+        <a class="btn ghost" href="tel:0000000000"><i class="fa fa-phone"></i> Llamar</a>
+        <a class="btn primary" id="whatsappBtn" href="#"><i class="fa fa-whatsapp"></i> WhatsApp</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-left">
+        <h2>Disponibles al instante. Atención rápida para situaciones de emergencia.</h2>
+        <p class="lead">Sueros, analgésicos, material de curación y más. Consulta stock y pide por WhatsApp. Entrega ágil para acompañantes y pacientes.</p>
+
+        <div class="hero-cta">
+          <input type="text" id="buscador" placeholder="Buscar medicamento..." class="search"/>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="card-cta">
+          <h3>Horario</h3>
+          <p>Abierto todos los días • Atención rápida</p>
+          <p class="small">Frente a Urgencias — Hospital General de Reforma</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+    <section class="catalog">
+      <h2>Catálogo</h2>
+      <div id="catalogo" class="products-grid"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-row">
+        <div>
+          <strong>Farmacia LiderPlus</strong><br>
+          Frente a Urgencias • Hospital General de Reforma
+        </div>
+        <div>
+          <small>Tel: 917-117-3585</small><br>
+          <small>Email: farmaliderplus2025@gmail.com</small>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
