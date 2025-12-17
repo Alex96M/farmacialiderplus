@@ -25,7 +25,7 @@ async function cargar() {
   productos.forEach(p => {
     lista.innerHTML += `
       <tr>
-        <td><img src="${p.image}" class="admin-img" /></td>
+        <td>${p.image ? `<img src="${p.image}" class="admin-img" />` : ""}</td>
         <td>${p.name}</td>
         <td>$${p.price}</td>
         <td>${p.stock}</td>
@@ -81,4 +81,5 @@ function logout() {
 }
 
 cargar();
+
 
