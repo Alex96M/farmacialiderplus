@@ -82,4 +82,11 @@ function logout() {
 
 cargar();
 
+function logout() {
+  localStorage.removeItem("adminToken");
+  window.location.href = "/admin/login.html";
+}
+
+
+
 
