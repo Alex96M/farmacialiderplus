@@ -1,16 +1,16 @@
 async function login() {
-  const usuario = document.getElementById("usuario").value;
-  const password = document.getElementById("password").value;
+  const user = document.getElementById("usuario").value;
+  const pass = document.getElementById("password").value;
   const mensaje = document.getElementById("mensaje");
 
   mensaje.textContent = "";
 
-  const res = await fetch("/api/login", {
+  const res = await fetch("/api/admin/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
-    body: JSON.stringify({ usuario, password })
+    body: JSON.stringify({ user, pass })
   });
 
   if (!res.ok) {
@@ -19,7 +19,10 @@ async function login() {
   }
 
   const data = await res.json();
-  localStorage.setItem("token", data.token);
+
+  // Guardamos el token simple
+  localStorage.setItem("adminToken", data.token);
 
   window.location.href = "/admin/admin.html";
 }
+
