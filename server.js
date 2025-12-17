@@ -17,6 +17,16 @@ const ADMIN_PASS = process.env.ADMIN_PASS || "1234";
 // Middleware para servir la carpeta /public
 app.use(express.static(path.join(__dirname, "public")));
 
+const storage = multer.diskStorage({
+  destination: path.join(__dirname, "public/img"),
+  filename: (req, file, cb) => {
+    const ext = path.extname(file.originalname);
+    cb(null, Date.now() + ext);
+  }
+});
+
+const upload = multer({ storage });
+
 app.post("/api/admin/login", (req, res) => {
   const { user, pass } = req.body;
 
@@ -137,13 +147,16 @@ app.post(
   authAdmin,
   upload.single("imagen"),
   (req, res) => {
+    if (!req.file) {
+      return res.status(400).json({ error: "No se subió imagen" });
+    }
+
     res.json({ image: `img/${req.file.filename}` });
   }
 );
 
-
-
 //
+
 
 
 
