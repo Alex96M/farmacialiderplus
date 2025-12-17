@@ -90,36 +90,32 @@ app.listen(PORT, () => {
 });
 
 // Crear producto
-app.post("/api/admin/productos", authAdmin, (req, res) => {
-  let { name, description, price, category, image, stock } = req.body;
+app.post(
+  "/api/admin/productos",
+  authAdmin,
+  upload.single("imagen"),
+  (req, res) => {
+    const { name, description, price, category, stock } = req.body;
+    const image = req.file ? `img/${req.file.filename}` : null;
 
-  // 🔐 VALIDACIÓN MÍNIMA
-  if (!name || price === undefined || price === "") {
-    return res.status(400).json({ error: "Nombre y precio son obligatorios" });
-  }
-
-  // 🔧 CONVERSIONES SEGURAS
-  price = parseFloat(price);
-  stock = parseInt(stock || 0);
-
-  // 🖼️ IMAGEN POR DEFECTO
-  if (!image) image = "";
-
-  db.run(
-    `INSERT INTO productos (name, description, price, category, image, stock)
-     VALUES (?,?,?,?,?,?)`,
-    [name, description || "", price, category || "", image, stock],
-    function (err) {
-      if (err) {
-        console.error("ERROR SQLITE:", err);
-        return res.status(500).json({ error: "No se pudo insertar" });
-      }
-      res.json({ id: this.lastID });
+    if (!name || !price) {
+      return res.status(400).json({ error: "Datos incompletos" });
     }
-  );
-});
 
-
+    db.run(
+      `INSERT INTO productos (name, description, price, category, image, stock)
+       VALUES (?,?,?,?,?,?)`,
+      [name, description, price, category, image, stock],
+      err => {
+        if (err) {
+          console.error(err);
+          return res.status(500).json({ error: "Error al guardar" });
+        }
+        res.json({ ok: true });
+      }
+    );
+  }
+);
 
 // Editar Producto
 app.put("/api/admin/productos/:id", authAdmin, (req, res) => {
@@ -160,6 +156,7 @@ app.post(
 );
 
 //
+
 
 
 
