@@ -1,4 +1,4 @@
-fetch("/api/productos")
+fetch("/api/admin/productos")
   .then(res => res.json())
   .then(productos => {
     const contenedor = document.getElementById("catalogo");
@@ -17,5 +17,6 @@ fetch("/api/productos")
     });
   })
   .catch(err => console.error(err));
+
 
 
