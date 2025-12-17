@@ -17,8 +17,6 @@ const ADMIN_PASS = process.env.ADMIN_PASS || "1234";
 // Middleware para servir la carpeta /public
 app.use(express.static(path.join(__dirname, "public")));
 
-const upload = multer({ storage });
-
 app.post("/api/admin/login", (req, res) => {
   const { user, pass } = req.body;
 
@@ -148,6 +146,7 @@ app.post(
 );
 
 //
+
 
 
 
