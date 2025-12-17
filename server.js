@@ -12,8 +12,8 @@ const PORT = process.env.PORT || 3000;
 // Base de datos
 const db = new sqlite3.Database("/data/database.sqlite");
 
-const ADMIN_USER = process.env.ADMIN_USER || "admin";
-const ADMIN_PASS = process.env.ADMIN_PASS || "1234";
+const ADMIN_USER = process.env.ADMIN_USER || "administrador";
+const ADMIN_PASS = process.env.ADMIN_PASS || "Farmalider+";
 
 // Middleware para servir la carpeta /public
 app.use(express.static(path.join(__dirname, "public")));
@@ -160,6 +160,7 @@ app.post(
 );
 
 //
+
 
 
 
