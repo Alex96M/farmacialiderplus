@@ -1,4 +1,4 @@
-const token = localStorage.getItem("token");
+const token = localStorage.getItem("adminToken");
 
 if (!token) {
   window.location.href = "/admin/login.html";
@@ -8,9 +8,15 @@ if (!token) {
 async function cargar() {
   const res = await fetch("/api/admin/productos", {
     headers: {
-      Authorization: "Bearer " + token
+      "x-admin-token": token
     }
   });
+
+  if (!res.ok) {
+    alert("No autorizado");
+    logout();
+    return;
+  }
 
   const productos = await res.json();
   const lista = document.getElementById("lista");
@@ -46,7 +52,7 @@ async function guardar() {
   await fetch("/api/admin/productos", {
     method: "POST",
     headers: {
-      Authorization: "Bearer " + token
+      "x-admin-token": token
     },
     body: formData
   });
@@ -54,14 +60,14 @@ async function guardar() {
   cargar();
 }
 
-/* Eliminar */
+/* Eliminar producto */
 async function eliminar(id) {
   if (!confirm("¿Eliminar este producto?")) return;
 
   await fetch(`/api/admin/productos/${id}`, {
     method: "DELETE",
     headers: {
-      Authorization: "Bearer " + token
+      "x-admin-token": token
     }
   });
 
@@ -70,10 +76,8 @@ async function eliminar(id) {
 
 /* Logout */
 function logout() {
-  localStorage.removeItem("token");
+  localStorage.removeItem("adminToken");
   window.location.href = "/admin/login.html";
 }
 
 cargar();
-
-
