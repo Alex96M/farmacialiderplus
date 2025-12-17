@@ -78,3 +78,30 @@ td img {
   border-radius: 5px;
   cursor: pointer;
 }
+
+/* LOGIN */
+.admin-login {
+  background: var(--bg-color);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-card {
+  width: 320px;
+  text-align: center;
+}
+
+.login-card p {
+  color: #666;
+  margin-bottom: 15px;
+}
+
+#mensaje {
+  display: block;
+  margin-top: 10px;
+  color: red;
+  font-size: 14px;
+}
+
