@@ -40,16 +40,35 @@ async function subirImagen() {
 }
 
 async function guardar() {
-  const image = await subirImagen();
+  const image = await subirImagen(); // puede ser null
 
   const producto = {
-    name: name.value,
-    price: price.value,
-    stock: stock.value,
-    category: category.value,
-    description: description.value,
-    image
+    name: document.getElementById("name").value.trim(),
+    description: document.getElementById("description").value.trim(),
+    price: document.getElementById("price").value,
+    category: document.getElementById("category").value.trim(),
+    stock: document.getElementById("stock").value,
+    image: image || ""
   };
+
+  const res = await fetch("/api/admin/productos", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "x-admin-token": token
+    },
+    body: JSON.stringify(producto)
+  });
+
+  if (!res.ok) {
+    alert("Error al guardar producto");
+    return;
+  }
+
+  limpiar();
+  cargar();
+}
+
 
   const method = editId ? "PUT" : "POST";
   const url = editId
@@ -95,3 +114,4 @@ function limpiar() {
 }
 
 cargar();
+
