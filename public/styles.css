@@ -92,3 +92,64 @@ body{
   .header-inner{ flex-direction:column; gap:10px; align-items:flex-start; }
   .nav-actions{ align-self:flex-end; }
 }
+
+/* ===== ADMIN & LOGIN ===== */
+
+.admin-container,
+.login-container {
+  max-width: 420px;
+  margin: 80px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.admin-container h2,
+.login-container h2 {
+  text-align: center;
+  color: #1b5e20;
+  margin-bottom: 20px;
+}
+
+.admin-container input,
+.login-container input,
+.admin-container select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #c8e6c9;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.admin-container button,
+.login-container button {
+  width: 100%;
+  padding: 12px;
+  background-color: #2e7d32;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.admin-container button:hover,
+.login-container button:hover {
+  background-color: #1b5e20;
+}
+
+/* Botón eliminar */
+.btn-eliminar {
+  background-color: #c62828;
+  margin-top: 10px;
+}
+
+.btn-eliminar:hover {
+  background-color: #8e0000;
+}
+
+
