@@ -1,38 +1,22 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Login | Farmacia Líder Plus</title>
-
-  <!-- CSS del catálogo -->
-  <link rel="stylesheet" href="/styles.css">
-
-  <!-- CSS del admin -->
-  <link rel="stylesheet" href="admin.css">
+  <meta charset="UTF-8" />
+  <title>Login Admin</title>
+  <link rel="stylesheet" href="/css/style.css" />
 </head>
+<body>
 
-<body class="admin-login">
+  <div class="login-container">
+    <h2>Acceso Administrador</h2>
 
-  <div class="card login-card">
-    <h2>Farmacia Líder Plus</h2>
-    <p>Acceso administrativo</p>
+    <input type="text" id="user" placeholder="Usuario" />
+    <input type="password" id="pass" placeholder="Contraseña" />
 
-    <input type="text" id="usuario" placeholder="Usuario">
-    <input type="password" id="password" placeholder="Contraseña">
-
-    <button class="btn-primary" onclick="login()">Entrar</button>
-
-    <span id="mensaje"></span>
+    <button onclick="login()">Entrar</button>
   </div>
 
-<script src="login.js"></script>
+  <script src="login.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
 
