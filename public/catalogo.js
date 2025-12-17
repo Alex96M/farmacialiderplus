@@ -12,8 +12,10 @@ fetch("/api/productos")
         <p>${p.description}</p>
         <strong>$${p.price}</strong>
       `;
+      
       contenedor.appendChild(div);
     });
   })
   .catch(err => console.error(err));
+
 
