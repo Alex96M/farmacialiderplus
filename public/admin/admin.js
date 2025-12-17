@@ -95,9 +95,3 @@ async function eliminar(id) {
 }
 
 cargar();
-
-
-
-
-
-
