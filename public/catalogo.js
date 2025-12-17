@@ -7,7 +7,7 @@ fetch("/api/productos")
       const div = document.createElement("div");
       div.className = "producto";
       div.innerHTML = `
-        <img src="/${p.image}">
+        <img src="/${p.image}" alt="${p.name}">
         <h3>${p.name}</h3>
         <p>${p.description}</p>
         <strong>$${p.price}</strong>
@@ -16,3 +16,4 @@ fetch("/api/productos")
     });
   })
   .catch(err => console.error(err));
+
