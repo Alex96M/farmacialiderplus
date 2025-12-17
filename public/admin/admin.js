@@ -1,97 +1,79 @@
-console.log("admin.js cargado");
+const token = localStorage.getItem("token");
 
-const token = localStorage.getItem("adminToken");
-if (!token) location.href = "login.html";
+if (!token) {
+  window.location.href = "/admin/login.html";
+}
 
-async function subirImagen() {
-  const input = document.getElementById("imagen");
-  if (!input.files.length) return "";
+/* Cargar productos */
+async function cargar() {
+  const res = await fetch("/api/admin/productos", {
+    headers: {
+      Authorization: "Bearer " + token
+    }
+  });
 
+  const productos = await res.json();
+  const lista = document.getElementById("lista");
+  lista.innerHTML = "";
+
+  productos.forEach(p => {
+    lista.innerHTML += `
+      <tr>
+        <td><img src="/${p.image}"></td>
+        <td>${p.name}</td>
+        <td>$${p.price}</td>
+        <td>${p.stock}</td>
+        <td>
+          <button class="btn-danger" onclick="eliminar(${p.id})">
+            Eliminar
+          </button>
+        </td>
+      </tr>
+    `;
+  });
+}
+
+/* Guardar producto */
+async function guardar() {
   const formData = new FormData();
-  formData.append("imagen", input.files[0]);
+  formData.append("name", document.getElementById("name").value);
+  formData.append("price", document.getElementById("price").value);
+  formData.append("category", document.getElementById("category").value);
+  formData.append("stock", document.getElementById("stock").value);
+  formData.append("description", document.getElementById("description").value);
+  formData.append("imagen", document.getElementById("imagen").files[0]);
 
-  const res = await fetch("/api/admin/upload", {
+  await fetch("/api/admin/productos", {
     method: "POST",
     headers: {
-      "x-admin-token": token
+      Authorization: "Bearer " + token
     },
     body: formData
   });
 
-  if (!res.ok) {
-    alert("Error al subir imagen");
-    return "";
-  }
-
-  const data = await res.json();
-  return data.image;
-}
-
-async function guardar() {
-  const image = await subirImagen();
-
-  const producto = {
-    name: document.getElementById("name").value.trim(),
-    description: document.getElementById("description").value.trim(),
-    price: document.getElementById("price").value,
-    category: document.getElementById("category").value.trim(),
-    stock: document.getElementById("stock").value,
-    image
-  };
-
-  const res = await fetch("/api/admin/productos", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "x-admin-token": token
-    },
-    body: JSON.stringify(producto)
-  });
-
-  if (!res.ok) {
-    alert("Error al guardar producto");
-    return;
-  }
-
-  alert("Producto guardado correctamente");
-  limpiar();
   cargar();
 }
 
-function limpiar() {
-  document.getElementById("name").value = "";
-  document.getElementById("description").value = "";
-  document.getElementById("price").value = "";
-  document.getElementById("category").value = "";
-  document.getElementById("stock").value = "";
-  document.getElementById("imagen").value = "";
-}
-
-async function cargar() {
-  const res = await fetch("/api/admin/productos", {
-    headers: { "x-admin-token": token }
-  });
-  const data = await res.json();
-  const lista = document.getElementById("lista");
-  lista.innerHTML = "";
-  data.forEach(p => {
-    lista.innerHTML += `
-      <li>
-        ${p.name}
-        <button onclick="eliminar(${p.id})">Eliminar</button>
-      </li>`;
-  });
-}
-
+/* Eliminar */
 async function eliminar(id) {
-  if (!confirm("¿Eliminar producto?")) return;
+  if (!confirm("¿Eliminar este producto?")) return;
 
   await fetch(`/api/admin/productos/${id}`, {
     method: "DELETE",
-    headers: { "x-admin-token": token }
+    headers: {
+      Authorization: "Bearer " + token
+    }
   });
 
   cargar();
 }
 
+/* Logout */
+function logout() {
+  localStorage.removeItem("token");
+  window.location.href = "/admin/login.html";
+}
+
 cargar();
+
+
