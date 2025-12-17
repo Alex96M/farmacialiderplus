@@ -77,18 +77,34 @@ app.listen(PORT, () => {
 
 // Crear producto
 app.post("/api/admin/productos", authAdmin, (req, res) => {
-  const { name, description, price, category, image, stock } = req.body;
+  let { name, description, price, category, image, stock } = req.body;
+
+  // 🔐 VALIDACIÓN MÍNIMA
+  if (!name || price === undefined || price === "") {
+    return res.status(400).json({ error: "Nombre y precio son obligatorios" });
+  }
+
+  // 🔧 CONVERSIONES SEGURAS
+  price = parseFloat(price);
+  stock = parseInt(stock || 0);
+
+  // 🖼️ IMAGEN POR DEFECTO
+  if (!image) image = "";
 
   db.run(
     `INSERT INTO productos (name, description, price, category, image, stock)
      VALUES (?,?,?,?,?,?)`,
-    [name, description, price, category, image, stock],
+    [name, description || "", price, category || "", image, stock],
     function (err) {
-      if (err) return res.status(500).json(err);
+      if (err) {
+        console.error("ERROR SQLITE:", err);
+        return res.status(500).json({ error: "No se pudo insertar" });
+      }
       res.json({ id: this.lastID });
     }
   );
 });
+
 
 
 // Editar Producto
@@ -128,6 +144,7 @@ app.post(
 
 
 //
+
 
 
 
