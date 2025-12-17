@@ -1,16 +1,60 @@
-<h2>Panel de Productos</h2>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin | Farmacia Líder Plus</title>
 
-<input id="name" placeholder="Nombre">
-<input id="price" placeholder="Precio">
-<input id="stock" placeholder="Stock">
-<input id="category" placeholder="Categoría">
-<textarea id="description" placeholder="Descripción"></textarea>
-<input type="file" id="imagen" accept="image/*">
+  <!-- CSS del catálogo -->
+  <link rel="stylesheet" href="/css/style.css">
 
-<button onclick="guardar()">Guardar</button>
+  <!-- CSS del admin -->
+  <link rel="stylesheet" href="admin.css">
+</head>
 
-<ul id="lista"></ul>
+<body class="admin-panel">
+
+<header class="admin-header">
+  <h2>Panel de Administración</h2>
+  <button class="btn-danger" onclick="logout()">Cerrar sesión</button>
+</header>
+
+<main class="admin-grid">
+
+  <section class="card">
+    <h3>Agregar producto</h3>
+
+    <input id="name" placeholder="Nombre">
+    <input id="price" type="number" placeholder="Precio">
+    <input id="category" placeholder="Categoría">
+    <input id="stock" type="number" placeholder="Stock">
+    <textarea id="description" placeholder="Descripción"></textarea>
+    <input type="file" id="imagen">
+
+    <button class="btn-primary" onclick="guardar()">Guardar producto</button>
+  </section>
+
+  <section class="card">
+    <h3>Catálogo</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Imagen</th>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Stock</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody id="lista"></tbody>
+    </table>
+  </section>
+
+</main>
 
 <script src="admin.js"></script>
+</body>
+</html>
+
 
 
