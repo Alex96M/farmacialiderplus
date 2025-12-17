@@ -1,9 +1,14 @@
-require("./db_init");
-
 const express = require("express");
 const sqlite3 = require("sqlite3").verbose();
 const multer = require("multer");
 const path = require("path");
+
+const fs = require("fs");
+
+if (!fs.existsSync("/data/uploads")) {
+  fs.mkdirSync("/data/uploads", { recursive: true });
+}
+
 
 const app = express();
 app.use(express.json());
@@ -162,6 +167,7 @@ app.post(
 );
 
 //
+
 
 
 
