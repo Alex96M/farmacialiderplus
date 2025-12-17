@@ -1,63 +1,31 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Admin | Farmacia Líder Plus</title>
-
-  <!-- CSS del catálogo -->
-  <link rel="stylesheet" href="/styles.css">
-
-  <!-- CSS del admin -->
-  <link rel="stylesheet" href="admin.css">
+  <meta charset="UTF-8" />
+  <title>Panel Admin</title>
+  <link rel="stylesheet" href="/style.css" />
 </head>
+<body>
 
-<body class="admin-panel">
+  <div class="admin-container">
+    <h2>Alta de Producto</h2>
 
-<header class="admin-header">
-  <h2>Panel de Administración</h2>
-  <button class="btn-danger" onclick="logout()">Cerrar sesión</button>
-</header>
+    <input type="text" id="name" placeholder="Nombre" />
+    <input type="text" id="description" placeholder="Descripción" />
+    <input type="number" id="price" placeholder="Precio" />
+    <input type="text" id="category" placeholder="Categoría" />
+    <input type="number" id="stock" placeholder="Stock" />
+    <input type="file" id="imagen" />
 
-<main class="admin-grid">
+    <button onclick="guardar()">Agregar Producto</button>
 
-  <section class="card">
-    <h3>Agregar producto</h3>
+    <hr style="margin: 20px 0" />
 
-    <input id="name" placeholder="Nombre">
-    <input id="price" type="number" placeholder="Precio">
-    <input id="category" placeholder="Categoría">
-    <input id="stock" type="number" placeholder="Stock">
-    <textarea id="description" placeholder="Descripción"></textarea>
-    <input type="file" id="imagen">
+    <h2>Eliminar Producto</h2>
+    <input type="number" id="idEliminar" placeholder="ID del producto" />
+    <button class="btn-eliminar" onclick="eliminar()">Eliminar</button>
+  </div>
 
-    <button class="btn-primary" onclick="guardar()">Guardar producto</button>
-  </section>
-
-  <section class="card">
-    <h3>Catálogo</h3>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Imagen</th>
-          <th>Nombre</th>
-          <th>Precio</th>
-          <th>Stock</th>
-          <th>Acción</th>
-        </tr>
-      </thead>
-      <tbody id="lista"></tbody>
-    </table>
-  </section>
-
-</main>
-
-<script src="admin.js"></script>
+  <script src="admin.js"></script>
 </body>
 </html>
-
-
-
-
-
-
