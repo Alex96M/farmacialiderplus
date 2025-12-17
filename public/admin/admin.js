@@ -1,10 +1,29 @@
-console.log("admin.js cargado");
+async function subirImagen() {
+  const fileInput = document.getElementById("imagen");
+  if (!fileInput.files.length) return "";
 
-const token = localStorage.getItem("adminToken");
-if (!token) location.href = "login.html";
+  const formData = new FormData();
+  formData.append("imagen", fileInput.files[0]);
+
+  const res = await fetch("/api/admin/upload", {
+    method: "POST",
+    headers: {
+      "x-admin-token": token
+    },
+    body: formData
+  });
+
+  if (!res.ok) {
+    alert("Error al subir imagen");
+    return "";
+  }
+
+  const data = await res.json();
+  return data.image;
+}
 
 async function guardar() {
-  console.log("Guardar clic");
+  const image = await subirImagen(); // 🔑 primero sube imagen
 
   const producto = {
     name: document.getElementById("name").value.trim(),
@@ -12,7 +31,7 @@ async function guardar() {
     price: document.getElementById("price").value,
     category: document.getElementById("category").value.trim(),
     stock: document.getElementById("stock").value,
-    image: ""
+    image
   };
 
   const res = await fetch("/api/admin/productos", {
@@ -31,14 +50,9 @@ async function guardar() {
 
   alert("Producto guardado correctamente");
   limpiar();
+  cargar();
 }
 
-function limpiar() {
-  document.getElementById("name").value = "";
-  document.getElementById("description").value = "";
-  document.getElementById("price").value = "";
-  document.getElementById("category").value = "";
-  document.getElementById("stock").value = "";
-}
+
 
 
