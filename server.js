@@ -6,6 +6,7 @@ const path = require("path");
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static("public"));
 const PORT = process.env.PORT || 3000;
 
 // Base de datos
@@ -37,7 +38,7 @@ function authAdmin(req, res, next) {
 
 
 // Ruta para obtener productos
-app.get("/api/admin/productos", (req, res) => {
+app.get("/api/productos", (req, res) => {
   db.all("SELECT * FROM productos", [], (err, rows) => {
     if (err) {
       console.error("Error al listar productos:", err);
@@ -149,6 +150,7 @@ app.post(
 );
 
 //
+
 
 
 
