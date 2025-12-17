@@ -100,7 +100,7 @@ app.post(
   upload.single("imagen"),
   (req, res) => {
     const { name, description, price, category, stock } = req.body;
-    const image = req.file ? `img/${req.file.filename}` : null;
+    const imagePath = req.file ? "/img/" + req.file.filename : null;
 
     if (!name || !price) {
       return res.status(400).json({ error: "Datos incompletos" });
@@ -109,7 +109,7 @@ app.post(
     db.run(
       `INSERT INTO productos (name, description, price, category, image, stock)
        VALUES (?,?,?,?,?,?)`,
-      [name, description, price, category, image, stock],
+      [name, description, price, category, imagePath, stock],
       err => {
         if (err) {
           console.error(err);
@@ -160,16 +160,6 @@ app.post(
 );
 
 //
-
-
-
-
-
-
-
-
-
-
 
 
 
