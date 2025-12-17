@@ -17,14 +17,6 @@ const ADMIN_PASS = process.env.ADMIN_PASS || "1234";
 // Middleware para servir la carpeta /public
 app.use(express.static(path.join(__dirname, "public")));
 
-const storage = multer.diskStorage({
-  destination: path.join(__dirname, "public/img"),
-  filename: (req, file, cb) => {
-    const ext = path.extname(file.originalname);
-    cb(null, Date.now() + ext);
-  }
-});
-
 const upload = multer({ storage });
 
 app.post("/api/admin/login", (req, res) => {
@@ -156,6 +148,7 @@ app.post(
 );
 
 //
+
 
 
 
