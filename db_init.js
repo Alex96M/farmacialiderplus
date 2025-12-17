@@ -26,7 +26,7 @@ db.serialize(() => {
     "Caja 10 tabletas - Alivio de dolor y fiebre",
     25.00,
     "Analgésicos",
-    "img/paracetamol.png",
+    null,
     50
   );
   stmt.run(
@@ -34,7 +34,7 @@ db.serialize(() => {
     "Líquido de rehidratación oral",
     32.00,
     "Rehidratación",
-    "img/suero.png",
+    null,
     20
   );
   stmt.run(
@@ -42,7 +42,7 @@ db.serialize(() => {
     "Antiinflamatorio y analgésico",
     28.00,
     "Analgésicos",
-    "img/ibuprofeno.png",
+    null,
     30
   );
   stmt.run(
@@ -50,7 +50,7 @@ db.serialize(() => {
     "Material de curación y primeros auxilios",
     15.00,
     "Material",
-    "img/curitas.png",
+    null,
     100
   );
 
@@ -59,7 +59,7 @@ db.serialize(() => {
   "Protector gástrico",
   45.00,
   "Gastritis",
-  "img/omeprazol.png",
+  null,
   40
 );
 
@@ -68,7 +68,7 @@ stmt.run(
   "Material de curación",
   18.00,
   "Material",
-  "img/algodon.jpg",
+  null,
   60
 );
 
@@ -77,14 +77,14 @@ stmt.run(
   "Antiséptico para limpieza",
   22.00,
   "Material",
-  "img/alcohol.png",
+  null,
   30
 );
-
-
+  
   stmt.finalize();
 });
 
 db.close(() => {
   console.log("Base de datos inicializada: database.sqlite (productos de ejemplo insertados).");
 });
+
