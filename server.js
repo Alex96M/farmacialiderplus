@@ -37,9 +37,12 @@ function authAdmin(req, res, next) {
 
 
 // Ruta para obtener productos
-app.get("/api/productos", (req, res) => {
+app.get("/api/admin/productos", authAdmin, (req, res) => {
   db.all("SELECT * FROM productos", [], (err, rows) => {
-    if (err) return res.status(500).json(err);
+    if (err) {
+      console.error("Error al listar productos:", err);
+      return res.status(500).json({ error: "Error al obtener productos" });
+    }
     res.json(rows);
   });
 });
@@ -146,6 +149,7 @@ app.post(
 );
 
 //
+
 
 
 
