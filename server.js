@@ -38,14 +38,10 @@ function authAdmin(req, res, next) {
 
 // Ruta para obtener productos
 app.get("/api/productos", (req, res) => {
-    db.all("SELECT * FROM productos", [], (err, rows) => {
-        if (err) {
-            console.error(err);
-            res.status(500).json({ error: "Error al cargar productos" });
-        } else {
-            res.json(rows);
-        }
-    });
+  db.all("SELECT * FROM productos", [], (err, rows) => {
+    if (err) return res.status(500).json(err);
+    res.json(rows);
+  });
 });
 
 const storage = multer.diskStorage({
@@ -60,24 +56,17 @@ const upload = multer({ storage });
 
 // Ruta para buscar productos por nombre
 app.get("/api/buscar", (req, res) => {
-    const termino = req.query.q;
+  const q = `%${req.query.q || ""}%`;
 
-    if (!termino) {
-        return res.json([]);
+  db.all(
+    `SELECT * FROM productos 
+     WHERE name LIKE ? OR category LIKE ?`,
+    [q, q],
+    (err, rows) => {
+      if (err) return res.status(500).json(err);
+      res.json(rows);
     }
-
-    const sql = `
-        SELECT * FROM productos 
-        WHERE name LIKE ? OR category LIKE ?
-    `;
-
-    db.all(sql, [`%${termino}%`, `%${termino}%`], (err, rows) => {
-        if (err) {
-            console.error(err);
-            return res.status(500).json({ error: "Error al buscar productos" });
-        }
-        res.json(rows);
-    });
+  );
 });
 
 
@@ -139,5 +128,6 @@ app.post(
 
 
 //
+
 
 
