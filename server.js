@@ -7,6 +7,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
+app.use("/img", express.static("/data/uploads"));
 const PORT = process.env.PORT || 3000;
 
 // Base de datos
@@ -59,14 +60,17 @@ app.get("/api/productos", (req, res) => {
 });
 
 const storage = multer.diskStorage({
-  destination: path.join(__dirname, "public/img"),
-  filename: (req, file, cb) => {
-    const ext = path.extname(file.originalname);
-    cb(null, Date.now() + ext);
+  destination: function (req, file, cb) {
+    cb(null, "/data/uploads");
+  },
+  filename: function (req, file, cb) {
+    const ext = file.originalname.split(".").pop();
+    cb(null, Date.now() + "." + ext);
   }
 });
 
 const upload = multer({ storage });
+
 
 // Ruta para buscar productos por nombre
 app.get("/api/buscar", (req, res) => {
@@ -156,6 +160,7 @@ app.post(
 );
 
 //
+
 
 
 
