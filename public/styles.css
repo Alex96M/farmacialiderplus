@@ -95,7 +95,14 @@ body{
 
 /* ===== ADMIN & LOGIN ===== */
 
-.admin-container,
+.admin-container {
+  max-width: 1100px;   /* MISMO ANCHO QUE EL CATÁLOGO */
+  margin: 40px auto;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
 .login-container {
   max-width: 420px;
   margin: 80px auto;
@@ -104,6 +111,7 @@ body{
   border-radius: 12px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
+
 
 .admin-container h2,
 .login-container h2 {
@@ -170,10 +178,11 @@ body{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #2e7d32;
-  padding: 12px 20px;
-  border-radius: 10px;
-  margin-bottom: 25px;
+  background: linear-gradient(90deg, var(--blue-strong), #005b9a);
+  padding: 18px 24px;
+  border-radius: 14px;
+  margin-bottom: 30px;
+  box-shadow: 0 10px 30px rgba(3,27,78,0.15);
 }
 
 .admin-title {
@@ -204,16 +213,16 @@ body{
 
 .admin-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 25px;
+  grid-template-columns: 420px 1fr; /* Alta fija, productos amplios */
+  gap: 30px;
 }
 
 /* Tarjetas del admin */
 .admin-card {
-  background: #ffffff;
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  background: var(--card);
+  padding: 28px;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(3,27,78,0.08);
 }
 
 /* Títulos */
@@ -229,11 +238,16 @@ body{
 }
 
 /* Responsive */
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
   .admin-grid {
     grid-template-columns: 1fr;
   }
+
+  .admin-container {
+    padding: 0 16px;
+  }
 }
+
 
 
 
