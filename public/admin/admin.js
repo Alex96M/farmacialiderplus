@@ -68,7 +68,7 @@ function limpiar(){
   document.getElementById("price").value = '';
   document.getElementById("category").value = '';
   document.getElementById("stock").value = '';
-  document.getElementById("description").value) = '';
+  document.getElementById("description").value = '';
   document.getElementById("imagen").value = '';
 }
 
@@ -98,6 +98,7 @@ function logout() {
   localStorage.removeItem("adminToken");
   window.location.href = "/admin/login.html";
 }
+
 
 
 
