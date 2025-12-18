@@ -14,35 +14,40 @@
   </div>
 
 
-  <div class="admin-container">
-    <h2>Alta de Producto</h2>
+ <div class="admin-container">
 
-    <input type="text" id="name" placeholder="Nombre" />
-    <input type="text" id="description" placeholder="Descripción" />
-    <input type="number" id="price" placeholder="Precio" />
-    <input type="text" id="category" placeholder="Categoría" />
-    <input type="number" id="stock" placeholder="Stock" />
-    <input type="file" id="imagen" />
-
-    <button onclick="guardar()">Agregar Producto</button>
-
-    <hr style="margin: 20px 0" />
-
-    <h2>Productos</h2>
-    <div id="lista"></div>
-
-
-    <h2>Eliminar Producto</h2>
-    <input type="number" id="idEliminar" placeholder="ID del producto" />
-    <button class="btn-eliminar" onclick="eliminar()">Eliminar</button>
+  <!-- HEADER -->
+  <div class="admin-header">
+    <span class="admin-title">Panel Administrador</span>
+    <button class="btn-logout" onclick="logout()">Cerrar sesión</button>
   </div>
+
+  <!-- GRID -->
+  <div class="admin-grid">
+
+    <!-- COLUMNA IZQUIERDA -->
+    <div class="admin-card">
+      <h2>Alta de Producto</h2>
+
+      <input type="text" id="name" placeholder="Nombre" />
+      <input type="text" id="description" placeholder="Descripción" />
+      <input type="number" id="price" placeholder="Precio" />
+      <input type="text" id="category" placeholder="Categoría" />
+      <input type="number" id="stock" placeholder="Stock" />
+      <input type="file" id="imagen" />
+
+      <button onclick="guardar()">Agregar Producto</button>
+    </div>
+
+    <!-- COLUMNA DERECHA -->
+    <div class="admin-card">
+      <h2>Productos</h2>
+      <div id="listaProductos"></div>
+    </div>
+
+  </div>
+</div>
 
   <script src="admin.js"></script>
 </body>
 </html>
-
-
-
-
-
-
