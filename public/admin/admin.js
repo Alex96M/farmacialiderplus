@@ -57,7 +57,19 @@ async function guardar() {
     body: formData
   });
 
+  limpiar();
   cargar();
+
+  alert("Producto ingresado");
+}
+
+function limpiar(){
+  document.getElementById("name").value = '';
+  document.getElementById("price").value = '';
+  document.getElementById("category").value = '';
+  document.getElementById("stock").value = '';
+  document.getElementById("description").value) = '';
+  document.getElementById("imagen").value = '';
 }
 
 /* Eliminar producto */
@@ -86,6 +98,7 @@ function logout() {
   localStorage.removeItem("adminToken");
   window.location.href = "/admin/login.html";
 }
+
 
 
 
