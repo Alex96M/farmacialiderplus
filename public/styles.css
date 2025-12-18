@@ -172,10 +172,26 @@ body{
   background-color: #f5f5f5;
 }
 
+/* ===== ADMIN HEADER ===== */
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(90deg, var(--blue-strong), #005b9a);
+  padding: 18px 24px;
+  border-radius: 14px;
+  margin-bottom: 30px;
+  box-shadow: 0 10px 30px rgba(3,27,78,0.15);
+}
+
+.admin-title {
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+}
 
 
 /* ===== BOTÓN LOGOUT ===== */
-
 .btn-logout {
   background-color: #c62828;
   color: white;
@@ -230,6 +246,7 @@ body{
     padding: 0 16px;
   }
 }
+
 
 
 
