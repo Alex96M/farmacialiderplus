@@ -25,7 +25,7 @@ async function cargar() {
   productos.forEach(p => {
     lista.innerHTML += `
       <tr>
-        <td>${p.image ? `<img src="/img/${p.image}" class="admin-img" />` : ""}</td>
+        <td>${p.image ? `<img src="/${p.image}" class="admin-img" />` : ""}</td>
         <td>${p.name}</td>
         <td>$${p.price}</td>
         <td>${p.stock}</td>
@@ -98,6 +98,7 @@ function logout() {
   localStorage.removeItem("adminToken");
   window.location.href = "/admin/login.html";
 }
+
 
 
 
