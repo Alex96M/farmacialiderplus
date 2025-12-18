@@ -200,6 +200,42 @@ body{
   background-color: #8e0000;
 }
 
+/* ===== ADMIN GRID ===== */
+
+.admin-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+/* Tarjetas del admin */
+.admin-card {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Títulos */
+.admin-card h2 {
+  text-align: center;
+  color: #1b5e20;
+  margin-bottom: 20px;
+}
+
+/* Productos en lista */
+#listaProductos > div {
+  margin-bottom: 15px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .admin-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
 
 
 
