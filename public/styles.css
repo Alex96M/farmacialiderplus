@@ -247,6 +247,22 @@ body{
   }
 }
 
+/* ===== FIX IMÁGENES EN RESULTADOS DE BÚSQUEDA ===== */
+
+/* Fuerza tamaño fijo a cualquier imagen renderizada en el catálogo */
+#catalogo img {
+  width: 100%;
+  height: 150px;
+  max-height: 150px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  background-color: #f3f6fb;
+  border-radius: 8px;
+}
+
+
+
 
 
 
