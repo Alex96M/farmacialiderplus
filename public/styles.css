@@ -445,3 +445,54 @@ body{
   }
 }
 
+/* ===============================
+   ADMIN – FIX REAL MOBILE
+   =============================== */
+
+@media (max-width: 768px) {
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .admin-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 16px auto;
+    padding: 0 14px;
+  }
+
+  .admin-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .admin-card {
+    width: 100%;
+    padding: 18px;
+    overflow-x: visible; /* 🔥 MUY IMPORTANTE */
+  }
+
+  .admin-header {
+    flex-direction: column;
+    gap: 10px;
+    padding: 14px;
+    text-align: center;
+  }
+
+  .btn-logout {
+    width: 100%;
+  }
+
+  .admin-img {
+    width: 60px;
+    height: 60px;
+  }
+
+  #listaProductos > div {
+    padding: 12px;
+    border-radius: 12px;
+  }
+}
+
