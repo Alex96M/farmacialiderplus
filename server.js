@@ -107,7 +107,7 @@ app.post(
   upload.single("imagen"),
   (req, res) => {
     const { name, description, price, category, stock } = req.body;
-    const imagePath = req.file ? '/img/' + req.file.filename : null;
+    const imagePath = req.file ? req.file.filename : null;
 
     if (!name || !price) {
       return res.status(400).json({ error: "Datos incompletos" });
@@ -167,6 +167,7 @@ app.post(
 );
 
 //
+
 
 
 
