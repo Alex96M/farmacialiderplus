@@ -48,7 +48,7 @@ buscador.addEventListener("input", async () => {
         productos.forEach(p => {
             contenedor.innerHTML += `
                 <div class="producto">
-                    <img src="${p.image}" alt="${p.name}">
+                    <img src="/img/${p.image}" alt="${p.name}">
                     <h3>${p.name}</h3>
                     <p>$${p.price} MXN</p>
                 </div>
@@ -59,5 +59,6 @@ buscador.addEventListener("input", async () => {
         console.error("Error al buscar:", error);
     }
 });
+
 
 
