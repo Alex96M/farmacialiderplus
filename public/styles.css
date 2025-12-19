@@ -497,26 +497,23 @@ body{
 }
 
 /* ===============================
-   ADMIN – ORDEN MOBILE / TABLET
+   ADMIN – ORDEN REAL EN MÓVIL
    =============================== */
 
 @media (max-width: 1024px) {
 
   .admin-grid {
-    display: flex;
-    flex-direction: column;
+    display: flex !important;
+    flex-direction: column !important;
   }
 
-  /* Alta de producto arriba */
-  .alta-producto {
+  /* PRIMER CARD → Alta de producto */
+  .admin-grid > .admin-card:first-child {
     order: 1;
   }
 
-  /* Lista de productos abajo */
-  .lista-productos {
+  /* SEGUNDO CARD → Lista de productos */
+  .admin-grid > .admin-card:last-child {
     order: 2;
   }
 }
-
-
-
