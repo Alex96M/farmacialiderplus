@@ -496,3 +496,27 @@ body{
   }
 }
 
+/* ===============================
+   ADMIN – ORDEN MOBILE / TABLET
+   =============================== */
+
+@media (max-width: 1024px) {
+
+  .admin-grid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Alta de producto arriba */
+  .alta-producto {
+    order: 1;
+  }
+
+  /* Lista de productos abajo */
+  .lista-productos {
+    order: 2;
+  }
+}
+
+
+
