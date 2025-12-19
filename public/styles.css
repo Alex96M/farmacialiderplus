@@ -347,3 +347,101 @@ body{
   max-width: 70px;
   max-height: 70px;
 }
+
+/* ===============================
+   ADMIN – FIX RESPONSIVE MÓVIL
+   =============================== */
+
+@media (max-width: 768px) {
+
+  /* Contenedor principal */
+  .admin-container {
+    margin: 20px auto;
+    padding: 0 14px;
+  }
+
+  /* Header */
+  .admin-header {
+    flex-direction: column;
+    gap: 10px;
+    padding: 14px;
+    text-align: center;
+  }
+
+  .admin-title {
+    font-size: 15px;
+  }
+
+  .btn-logout {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+  }
+
+  /* Grid → UNA SOLA COLUMNA */
+  .admin-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  /* Tarjetas */
+  .admin-card {
+    width: 100%;
+    padding: 20px;
+    border-radius: 14px;
+  }
+
+  .admin-card h2 {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
+  /* Inputs y botones */
+  .admin-container input,
+  .admin-container button {
+    font-size: 15px;
+    padding: 12px;
+  }
+
+  /* Lista de productos */
+  #lista {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  /* Cada producto */
+  #lista > div {
+    padding: 12px;
+    border-radius: 12px;
+    background: #f9fafb;
+  }
+
+  /* Imagen producto */
+  .admin-img {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 6px;
+  }
+
+  /* Botón eliminar */
+  .btn-danger,
+  .btn-eliminar {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 14px;
+  }
+}
+
+/* EXTRA: celulares muy pequeños */
+@media (max-width: 420px) {
+  .admin-card h2 {
+    font-size: 16px;
+  }
+
+  .admin-title {
+    font-size: 14px;
+  }
+}
+
